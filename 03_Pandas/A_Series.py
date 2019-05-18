@@ -183,6 +183,9 @@ def calculo(valor):
 
 ciudades_uno.map(calculo)
 
+
+ciudad_uno.where(ciudad_uno > 1000,ciudad_uno * 1.05 )
+
 #
 #
 
