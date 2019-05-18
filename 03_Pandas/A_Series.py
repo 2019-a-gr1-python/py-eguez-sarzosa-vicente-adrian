@@ -80,7 +80,8 @@ np.square(serie_valor_ciudad)
 np.sin(serie_valor_ciudad)
 
 ciudades_uno = pd.Series({
-            "Loja":4000
+            "Loja":4000,
+            "Guayaquil":10000
         })
 
 ciudades_dos = pd.Series({
@@ -97,6 +98,97 @@ randomico = np.random.rand(3)
 serie_tres_rand = pd.Series(randomico)
 
 ciudades_uno.index
+
+# Concatenar series
+
+ciudades_uno = pd.Series({
+            "Loja":4000,
+            "Guayaquil":10000
+        })
+
+ciudades_dos = pd.Series({
+            "Montañita":300,
+            "Guayaquil":10000,
+            "Quito":2000
+        })
+
+# Suma los valores
+ciudades_add = ciudades_uno.add(ciudades_dos)
+
+
+ciudades_uno = pd.Series({
+            "Loja":4000,
+            "Guayaquil":1200,
+            "Quito":3000
+        })
+
+ciudades_dos = pd.Series({
+            "Montañita":300,
+            "Guayaquil":10000,
+            "Quito":2000
+        })
+
+
+ciudades_concat = pd.concat([ciudades_uno,
+                            ciudades_dos])
+
+ciudades_concat_v = pd.concat([ciudades_uno,
+                            ciudades_dos],
+                verify_integrity=True)
+
+
+ciudades_append = ciudades_uno.append(ciudades_dos)
+# Anadir un indice valor a una serie
+
+# Maximo
+
+ciudades_uno.max()
+pd.Series.max(ciudades_uno)
+np.max(ciudades_uno)
+# Minimo
+
+ciudades_uno.min()
+pd.Series.min(ciudades_uno)
+np.min(ciudades_uno)
+
+# Estadisticas (Avg Mean ...)
+ciudades_uno.mean()
+ciudades_uno.median()
+np.average(ciudades_uno)
+
+# Primer (5)
+ciudades_uno.head(2)
+
+# Ultimos (5)
+ciudades_uno.tail(2)
+
+ciudades_uno.sort_values().head(2)
+ciudades_uno.sort_values().tail(2)
+
+ciudades_uno.sort_values(ascending = False).head(2)
+ciudades_uno.sort_values(ascending = False).tail(2)
+
+
+# 0 >= 1000      5%
+# 1000 >= 10000  10%
+# 10000 >        15%
+
+def calculo(valor):
+    if(valor <=1000):
+        return valor * 1.05
+    if(valor >1000 and valor <= 10000):
+        return valor * 1.10
+    if(valor >10000):
+        return valor * 1.15
+
+ciudades_uno.map(calculo)
+
+#
+#
+
+
+
+
 
 
 
