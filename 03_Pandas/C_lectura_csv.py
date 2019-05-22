@@ -40,7 +40,7 @@ df_completo.to_pickle(path_guardado)
 
 df_completo_pickle = pd.read_pickle(path_guardado)
 
-
+df_completo.shape
 
 
 
