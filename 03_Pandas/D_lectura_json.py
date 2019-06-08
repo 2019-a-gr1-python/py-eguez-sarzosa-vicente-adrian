@@ -32,11 +32,36 @@ def leer_json(path_archivo,llaves):
 
 leer_json(path_archivo, llaves)
 
+def leer_json_en_carpetas(directorio, llaves):
+    trabajos_arte = []
+    print(type(os.walk(directorio)))  # 
+    for path_raiz, lista_directorios, archivos in os.walk(directorio):
+        print(path_raiz)  
+        print(type(path_raiz))  # String -> Path Actual
+        print(lista_directorios)
+        print(type(lista_directorios))  #  List String directorios 
+        print(archivos)
+        print(type(archivos))  #  List Strings nombre archivos
+        
+        for nombre_archivo in archivos:
+            print(nombre_archivo)
+            if nombre_archivo.endswith('json'):
+                directorio_archivo = os.path.join(
+                        path_raiz,
+                        nombre_archivo
+                        )
+                pieza_arte = leer_json(directorio_archivo, llaves)
+                trabajos_arte.append(pieza_arte)
+                
+    df = pd.DataFrame.from_records(
+            trabajos_arte,
+            columns = llaves,
+            index = 'id'
+            )
+    return df
 
 
-
-
-
+df_artworks = leer_json_en_carpetas(path,llaves)
 
 
 
