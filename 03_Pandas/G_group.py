@@ -71,7 +71,12 @@ seccion_df_t = transformar_df(seccion_df)
 
 df_agrupado_titulo = df.groupby('title')
 
+df_agrupado_anio = df.groupby('year')
+print(df_agrupado_anio.size())
+anios = df_agrupado_anio.size()
 print(df_agrupado_titulo.size())
+
+
 
 print(type(df_agrupado_titulo.size()))
 
@@ -81,13 +86,13 @@ serie_titulos = df_agrupado_titulo.size(
 
 df_filtrado = df.filter(items = ["artist","title"])
 
-condicion = lambda x: len(x.index) > 5
+condicion = lambda x: len(x.index) > 1
 
 
+df_titulos_dup = df_agrupado_titulo.filter(condicion)
 
 
-
-
+resultado = df_titulos_dup.sort_values('title', inplace=True)
 
 
 
