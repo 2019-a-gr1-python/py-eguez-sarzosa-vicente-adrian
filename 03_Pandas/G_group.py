@@ -69,13 +69,19 @@ def transformar_df(df):
 seccion_df_t = transformar_df(seccion_df)
 
 
+df_agrupado_titulo = df.groupby('title')
+
+print(df_agrupado_titulo.size())
+
+print(type(df_agrupado_titulo.size()))
+
+serie_titulos = df_agrupado_titulo.size(
+        ).sort_values(ascending = False)
 
 
+df_filtrado = df.filter(items = ["artist","title"])
 
-
-
-
-
+condicion = lambda x: len(x.index) > 5
 
 
 
