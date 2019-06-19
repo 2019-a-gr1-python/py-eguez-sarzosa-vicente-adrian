@@ -75,6 +75,29 @@ writer.save()
 
 ######################## SQL ##########################
 
+
+with sqlite3.connect('bdd_python.db') as conexion:
+    df.to_sql('tabla', conexion)
+    
+## with mysql.connect('mysql://user:password@ip:puerto/bd') as conexion:
+##    df.to_sql('Alguien', conexion)>
+
+
+######################## JSON ##########################
+    
+df.to_json('artistas.json')
+df.to_json('artistas_orientado_tabla.json', orient='table')    
+
+
+
+
+
+
+
+
+
+
+
  
 
 
