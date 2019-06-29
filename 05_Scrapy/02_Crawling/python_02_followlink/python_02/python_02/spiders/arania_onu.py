@@ -18,16 +18,35 @@ class AraniaCrawlOnu(CrawlSpider):
         ,
     )
 
+    url_segmento_permitido = (
+        'funds-programmes-specialized-agencies-and-others'
+        )
+
     regla_dos = (
         Rule(
             LinkExtractor(
-                allow_domains=allowed_domains,
-                allow=('funds-programmes-specialized-agencies-and-others')
-            ), callback='parse_page')
+                allow_domains = allowed_domains,
+                allow = url_segmento_permitido
+            ), callback = 'parse_page')
+        ,
+    )
+    
+    url_segmento_restringido = (
+        'ar/sections',
+        'zh/sections',
+        'ru/sections'
+    )
+    regla_tres = (
+        Rule(
+            LinkExtractor(
+                allow_domains = allowed_domains,
+                allow = url_segmento_permitido,
+                deny= url_segmento_restringido
+            ), callback = 'parse_page')
         ,
     )
 
-    rules = regla_dos
+    rules = regla_tres
 
 
     def parse_page(self, response):
