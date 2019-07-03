@@ -11,7 +11,6 @@ class AraniaCrawlOnu(CrawlSpider):
     start_urls = [  # Heredado (conservar nombre)
         'https://www.un.org/en/sections/about-un/funds-programmes-specialized-agencies-and-others/index.html'
     ]
-    # Heredado (conservar nombre)
 
     regla_uno = (
         Rule(LinkExtractor(), callback='parse_page')
