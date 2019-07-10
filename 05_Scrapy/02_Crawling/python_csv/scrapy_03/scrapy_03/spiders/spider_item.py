@@ -8,7 +8,7 @@ class AraniaProductosFybeca(scrapy.Spider):
 
     def start_requests(self):
         urls = [
-        'https://www.fybeca.com/FybecaWeb/pages/search-results.jsf?cat=238&s=0&pp=25'
+        'https://www.fybeca.com/FybecaWeb/pages/search-results.jsf?cat=238&s=150&pp=25'
         ]
 
         for url in urls:
@@ -33,6 +33,7 @@ class AraniaProductosFybeca(scrapy.Spider):
                     'titulo',
                     'a.name::text'
                     )
+                
                 producto_loader.add_xpath(
                     'imagen',
                     'div[contains(@class,"detail")]/a[contains(@class,"image")]/img[contains(@id,"gImg")]/@src'
